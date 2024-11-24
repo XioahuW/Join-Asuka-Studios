@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="shortcut icon" href="images/favicon.ico">
+<head>
+  <!-- 定义文档类型为HTML，语言为英语（可按需修改） -->
+  <meta charset="UTF-8">
+  <!-- 设置字符编码为UTF-8 -->
+  <title>申请加入飞鸟工作室</title>
+  <style>
+    /* 整体页面背景设置为渐变背景，营造出优雅的视觉效果 */
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      color: white;
+    }
+
+    /* 标题样式 */
+    h1 {
+      font-size: 36px;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    /* 按钮的通用样式 */
+    button {
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    /* 申请按钮默认样式，颜色和阴影等让它更立体、醒目 */
+    button#applyButton {
+      background-color: #FF512F;
+      background-image: linear-gradient(to right, #FF512F 0%, #F09819 100%);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 按钮悬停时的样式变化，添加动态效果 */
+    button#applyButton:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    /* 弹窗样式 */
+  .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    /* 弹窗内容样式 */
+  .modal-content {
+      background-color: #fefefe;
+      margin: 10% auto;
+      /* 调整了垂直居中的位置 */
+      padding: 20px;
+      border: 1px solid #888;
+      width: 800px;
+      /* 增加了宽度 */
+      height: 540px;
+      /* 增加了高度 */
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 关闭按钮样式 */
+  .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+  .close:hover,
+  .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* 协议内容样式 */
+  .agreement-content {
+      max-height: 400px;
+      /* 调整了最大高度以适应新的窗口大小 */
+      overflow-y: auto;
+    }
+
+    /* 刷新按钮样式 */
+  .refresh-button {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 页面主标题 -->
+  <h1>申请加入飞鸟工作室</h1>
+  <!-- 申请按钮，点击触发openModal函数打开弹窗 -->
+  <button id="applyButton" onclick="openModal()">申请</button>
+
+  <!-- 弹窗 -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <!-- 关闭按钮，点击触发closeModal函数关闭弹窗 -->
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>飞鸟工作室工作守则</h2>
+      <div class="agreement-content">
+        <!-- 使用iframe嵌入CSDN页面，并设置大小，此处链接可能需替换为合适的展示规则页面 -->
+        <iframe src="https://www.bilibili.com/opus/1002127990297985027" style="width:1000px; height:1000px;"></iframe>
+      </div>
+      <!-- 点击此按钮触发sendApplication函数，发送申请并关闭弹窗 -->
+      <button onclick="sendApplication()">我已阅读并同意，申请加入</button>
+      <!-- 点击此按钮触发refreshPage函数，刷新页面 -->
+      <button class="refresh-button" onclick="refreshPage()">刷新</button>
+    </div>
+  </div>
+
+  <script>
+    // 打开弹窗函数，将弹窗的display属性设置为block使其显示
+    function openModal() {
+      document.getElementById('myModal').style.display = 'block';
+    }
+
+    // 关闭弹窗函数，将弹窗的display属性设置为none使其隐藏
+    function closeModal() {
+      document.getElementById('myModal').style.display = 'none';
+    }
+
+    // 发送申请函数，目前构造mailto链接唤起邮件客户端（可完善实际发送逻辑），然后关闭弹窗
+    function sendApplication() {
+      // 这里可以添加实际发送申请的逻辑，例如打开邮件客户端
+      window.location.href = 'mailto:fanoagws@hotmail.com?subject=申请加入飞鸟工作室&body=你的QQ号______________有工作经历吗?_______[没有可以不填]多少岁?__________ 申请加入飞鸟工作室';
+      closeModal();
+    }
+
+    // 刷新页面函数，调用location.reload()方法刷新当前页面
+    function refreshPage() {
+      location.reload();
+    }
+  </script>
+</body>
+
+</html>
